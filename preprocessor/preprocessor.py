@@ -10,7 +10,7 @@ class Preprocessor:
         self.url_pattern=ur'(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:\'".,<>?\xab\xbb\u201c\u201d\u2018\u2019]))'
         self.hashtag_pattern = r'#\w*'
         self.mention_pattern = r'@\w*'
-        self.reserved_words = r'^(RT|FAV)*'
+        self.reserved_words = r'^(RT|FAV)'
         self.repl = None
 
     def clean(self, tweet_string, repl):
@@ -22,11 +22,13 @@ class Preprocessor:
         for a_cleaner_method in cleaner_methods:
             token = self.get_token_string_from_method_name(a_cleaner_method)
             method_to_call = getattr(self, a_cleaner_method)
+
             if self.repl == 'CLEAN':
                 tweet_string = method_to_call(tweet_string, '')
             else:
                 tweet_string = method_to_call(tweet_string, token)
 
+        tweet_string = self.clean_unneccessary_characters(tweet_string, token)
         return tweet_string
 
     def clean_urls(self, tweet_string, repl):
