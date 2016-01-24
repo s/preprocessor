@@ -28,7 +28,7 @@ class Preprocessor:
             else:
                 tweet_string = method_to_call(tweet_string, token)
 
-        tweet_string = self.clean_unneccessary_characters(tweet_string, token)
+        tweet_string = self.remove_unneccessary_characters(tweet_string)
         return tweet_string
 
     def clean_urls(self, tweet_string, repl):
@@ -43,11 +43,10 @@ class Preprocessor:
     def clean_reserved_words(self, tweet_string, repl):
         return re.sub(self.reserved_words, repl, tweet_string)
 
-    def clean_unneccessary_characters(self, tweet_string, repl):
+    def remove_unneccessary_characters(self, tweet_string):
         return ' '.join(tweet_string.split())
 
     def get_token_string_from_method_name(self, method_name):
-        token_string = ''
         token_string = method_name.rstrip('s')
         token_string = token_string.split('_')[1]
         token_string = token_string.upper()
