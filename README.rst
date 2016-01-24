@@ -9,24 +9,22 @@ When building Machine Learning systems based on tweet data, a preprocessing is r
 ===================
 Installation
 ===================
-Pip ile::
-
-$ pip install preprocessor
-
+```
+pip install tweet-preprocessor
+```
 
 ===================
 Usage
 ===================
 
-.. code-block:: python
+```
+import preprocessor as p
+cleaned_tweet = p.clean("Preprocessor is #awesome https://github.com/s/preprocessor")
 
-    import preprocessor as p
-    cleaned_tweet = p.clean("Preprocessor is #awesome https://github.com/s/preprocessor")
+print cleaned_tweet 
+#Preprocessor is
 
-    print cleaned_tweet 
-    #Preprocessor is
+tokenized_tweet = p.tokenize("Preprocessor is #awesome https://github.com/s/preprocessor")
 
-    tokenized_tweet = p.tokenize("Preprocessor is #awesome https://github.com/s/preprocessor")
-
-    print tokenized_tweet
-    #Preprocessor is $HASHTAG$ $URL$
+print tokenized_tweet
+#Preprocessor is $HASHTAG$ $URL$
