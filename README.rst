@@ -9,7 +9,7 @@ When building Machine Learning systems based on tweet data, a preprocessing is r
 ===================
 Installation
 ===================
-Pip ile::
+using pip::
 
 $ pip install tweet-preprocessor
 
