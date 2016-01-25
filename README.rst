@@ -18,25 +18,22 @@ $ pip install tweet-preprocessor
 Usage
 ===================
 
-Basic cleaning
-.. code-block:: python
+####Basic cleaning:
 
-    import preprocessor as p
-    cleaned_tweet = p.clean("Preprocessor is #awesome https://github.com/s/preprocessor")
-    #Preprocessor is
+    >>> import preprocessor as p
+    >>> cleaned_tweet = p.clean("Preprocessor is #awesome https://github.com/s/preprocessor")
+          # Preprocessor is
 
-Tokenizing
-.. code-block:: python
+####Tokenizing:
 
-    tokenized_tweet = p.tokenize("Preprocessor is #awesome https://github.com/s/preprocessor")
-    #Preprocessor is $HASHTAG$ $URL$
+    >>> tokenized_tweet = p.tokenize("Preprocessor is #awesome https://github.com/s/preprocessor")
+	      # Preprocessor is $HASHTAG$ $URL$
 
-Parsing
-.. code-block:: python
+####Parsing:
 
-    parsed_tweet = p.parse("Preprocessor is #awesome https://github.com/s/preprocessor")
-    #<preprocessor.parse.ParseResult instance at >
-    parsed_tweet.urls
-    #[(25:58) => https://github.com/s/preprocessor]
-    parsed_tweet.urls[0].start_index
-    #25
+    >>> parsed_tweet = p.parse("Preprocessor is #awesome https://github.com/s/preprocessor")
+          # <preprocessor.parse.ParseResult instance at >
+    >>> parsed_tweet.urls
+          # [(25:58) => https://github.com/s/preprocessor]
+    >>> parsed_tweet.urls[0].start_index
+          # 25
