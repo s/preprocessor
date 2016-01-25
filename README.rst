@@ -22,26 +22,30 @@ Basic cleaning:
 
 .. code-block:: python
 
-    import preprocessor as p
-    cleaned_tweet = p.clean("Preprocessor is #awesome https://github.com/s/preprocessor")
-      # Preprocessor is
+    >>> import preprocessor as p
+    >>> p.clean('Preprocessor is #awesome https://github.com/s/preprocessor')
+    'Preprocessor is'
 
 Tokenizing:
 ^^^^^^^^^^^
 
 .. code-block:: python
 
-    tokenized_tweet = p.tokenize("Preprocessor is #awesome https://github.com/s/preprocessor")
-      # Preprocessor is $HASHTAG$ $URL$
+    >>> p.tokenize('Preprocessor is #awesome https://github.com/s/preprocessor')
+    'Preprocessor is $HASHTAG$ $URL$'
 
 Parsing:
 ^^^^^^^^
 
 .. code-block:: python
 
-    parsed_tweet = p.parse("Preprocessor is #awesome https://github.com/s/preprocessor")
-      # <preprocessor.parse.ParseResult instance at >
-    parsed_tweet.urls
-      # [(25:58) => https://github.com/s/preprocessor]
-    parsed_tweet.urls[0].start_index
-      # 25
+    >>> parsed_tweet = p.parse('Preprocessor is #awesome https://github.com/s/preprocessor')
+    <preprocessor.parse.ParseResult instance at 0x10f430758>
+    >>> parsed_tweet.urls
+    [(25:58) => https://github.com/s/preprocessor]
+    >>> parsed_tweet.urls[0].start_index
+    25
+    >>> parsed_tweet.urls[0].match
+    'https://github.com/s/preprocessor'
+    >>> parsed_tweet.urls[0].end_index
+    58
