@@ -1,6 +1,15 @@
 # -*- coding: utf-8 -*-
+
+"""
+preprocessor.preprocess
+~~~~~~~~~~~~
+This module includes preprocess functionality
+
+"""
+
 import re
 from .constants import Patterns, Functions
+from .utils import Util
 
 class Preprocess:
 
@@ -8,11 +17,11 @@ class Preprocess:
 
     def __init__(self):
         self.repl = None
+        self.u = Util()
 
     def clean(self, tweet_string, repl):
 
-        all_methods = dir(self)
-        cleaner_methods = filter(lambda x: x.startswith('clean_'), all_methods)
+        cleaner_methods = self.u.get_worker_methods(self, 'preprocess_')
 
         for a_cleaner_method in cleaner_methods:
             token = self.get_token_string_from_method_name(a_cleaner_method)
@@ -26,16 +35,16 @@ class Preprocess:
         tweet_string = self.remove_unneccessary_characters(tweet_string)
         return tweet_string
 
-    def clean_urls(self, tweet_string, repl):
+    def preprocess_urls(self, tweet_string, repl):
         return re.sub(Patterns.URL_PATTERN, repl, tweet_string)
 
-    def clean_hashtags(self, tweet_string, repl):
+    def preprocess_hashtags(self, tweet_string, repl):
         return re.sub(Patterns.HASHTAG_PATTERN, repl, tweet_string)
 
-    def clean_mentions(self, tweet_string, repl):
+    def preprocess_mentions(self, tweet_string, repl):
         return re.sub(Patterns.MENTION_PATTERN, repl, tweet_string)
 
-    def clean_reserved_words(self, tweet_string, repl):
+    def preprocess_reserved_words(self, tweet_string, repl):
         return re.sub(Patterns.RESERVED_WORDS_PATTERN, repl, tweet_string)
 
     def remove_unneccessary_characters(self, tweet_string):
