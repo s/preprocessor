@@ -1,15 +1,19 @@
 import sys
-from .preprocessor import Preprocessor
+from .preprocess import Preprocess
+from .constants import Functions
+from .parse import Parse
 
-p = Preprocessor()
+preprocessor = Preprocess()
+parser = Parse()
 
 def clean(tweet_string):
-    tweet_string = p.clean(tweet_string, 'CLEAN')
-    return tweet_string
+    cleaned_tweet_string = preprocessor.clean(tweet_string, Functions.CLEAN)
+    return cleaned_tweet_string
 
 def tokenize(tweet_string):
-    tweet_string = p.clean(tweet_string, 'TOKENIZE')
-    return tweet_string
+    tokenized_tweet_string = preprocessor.clean(tweet_string, Functions.TOKENIZE)
+    return tokenized_tweet_string
 
 def parse(tweet_string):
-    pass
+    parsed_tweet_obj = parser.parse(tweet_string)
+    return parsed_tweet_obj
