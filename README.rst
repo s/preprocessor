@@ -18,7 +18,7 @@ $ pip install tweet-preprocessor
 Usage
 ===================
 
-####Basic cleaning:
+Basic cleaning:
 
     >>> import preprocessor as p
     >>> cleaned_tweet = p.clean("Preprocessor is #awesome https://github.com/s/preprocessor")
