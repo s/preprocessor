@@ -1,5 +1,5 @@
 ===================
-preprocessor
+Preprocessor
 ===================
 
 Preprocessor is a preprocessing library for tweet data written in Python.
@@ -18,15 +18,25 @@ $ pip install tweet-preprocessor
 Usage
 ===================
 
+Basic cleaning
 .. code-block:: python
 
     import preprocessor as p
     cleaned_tweet = p.clean("Preprocessor is #awesome https://github.com/s/preprocessor")
-
-    print cleaned_tweet
     #Preprocessor is
 
-    tokenized_tweet = p.tokenize("Preprocessor is #awesome https://github.com/s/preprocessor")
+Tokenizing
+.. code-block:: python
 
-    print tokenized_tweet
+    tokenized_tweet = p.tokenize("Preprocessor is #awesome https://github.com/s/preprocessor")
     #Preprocessor is $HASHTAG$ $URL$
+
+Parsing
+.. code-block:: python
+
+    parsed_tweet = p.parse("Preprocessor is #awesome https://github.com/s/preprocessor")
+    #<preprocessor.parse.ParseResult instance at >
+    parsed_tweet.urls
+    #[(25:58) => https://github.com/s/preprocessor]
+    parsed_tweet.urls[0].start_index
+    #25
