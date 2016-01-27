@@ -27,7 +27,7 @@ Basic cleaning:
 .. code-block:: python
 
     >>> import preprocessor as p
-    >>> p.clean('Preprocessor is #awesome https://github.com/s/preprocessor')
+    >>> p.clean('Preprocessor is #awesome 👍 https://github.com/s/preprocessor')
     'Preprocessor is'
 
 Tokenizing:
@@ -35,8 +35,8 @@ Tokenizing:
 
 .. code-block:: python
 
-    >>> p.tokenize('Preprocessor is #awesome https://github.com/s/preprocessor')
-    'Preprocessor is $HASHTAG$ $URL$'
+    >>> p.tokenize('Preprocessor is #awesome 👍 https://github.com/s/preprocessor')
+    'Preprocessor is $HASHTAG$ $EMOJI$ $URL$'
 
 Parsing:
 ^^^^^^^^
