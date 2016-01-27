@@ -1,5 +1,5 @@
 Preprocessor
-===================
+============
 
 .. image:: https://travis-ci.org/s/preprocessor.svg?branch=master
 
@@ -9,7 +9,7 @@ When building Machine Learning systems based on tweet data, a preprocessing is r
 
 Features
 ========
-Cleaning, tokenizing and parsing:
+Currently supports cleaning, tokenizing and parsing:
 
 - URLs
 - Hashtags
@@ -19,7 +19,7 @@ Cleaning, tokenizing and parsing:
 - Smileys
 
 Usage
-===================
+=====
 
 Basic cleaning:
 ^^^^^^^^^^^^^^^
