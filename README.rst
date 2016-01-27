@@ -10,12 +10,12 @@ When building Machine Learning systems based on tweet data, a preprocessing is r
 Features
 ========
 Cleaning, tokenizing and parsing:
-+ URLs
-+ Hashtags
-+ Mentions
-+ Reserved words (RT, FAV)
-+ Emojis
-+ Smileys
+- URLs
+- Hashtags
+- Mentions
+- Reserved words (RT, FAV)
+- Emojis
+- Smileys
 
 Usage
 ===================
