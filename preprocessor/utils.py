@@ -13,7 +13,7 @@ class Util:
 
     def get_worker_methods(self, object, prefix):
         all_methods = dir(object)
-        relevant_methods = filter(lambda x: x.startswith(prefix), all_methods)
+        relevant_methods = list(filter(lambda x: x.startswith(prefix), all_methods))
         prefixed_prioritised_methods = [prefix+m for m in PRIORITISED_METHODS]
 
         offset = 0

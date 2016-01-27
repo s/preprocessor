@@ -5,7 +5,6 @@ This module includes parse functionality
 
 """
 
-import re
 from .utils import Util
 from .constants import *
 
@@ -55,7 +54,10 @@ class Parse:
         items = []
 
         for match_object in re.finditer(pattern, string):
-            parse_item = ParseItem(match_object.start(), match_object.end(), match_object.group().encode('utf-8'))
+            if not IS_PYTHON3:
+                parse_item = ParseItem(match_object.start(), match_object.end(), match_object.group().encode('utf-8'))
+            else:
+                parse_item = ParseItem(match_object.start(), match_object.end(), match_object.group())
             items.append(parse_item)
 
         if len(items):
@@ -74,8 +76,9 @@ class Parse:
         return self.parser(Patterns.RESERVED_WORDS_PATTERN, tweet_string)
 
     def parse_emojis(self, tweet_string):
-        tweet_to_clean = tweet_string.decode('utf-8')
-        return self.parser(Patterns.EMOJIS_PATTERN, tweet_to_clean)
+        if not IS_PYTHON3:
+            tweet_string = tweet_string.decode('utf-8')
+        return self.parser(Patterns.EMOJIS_PATTERN, tweet_string)
 
     def parse_smileys(self, tweet_string):
         return self.parser(Patterns.SMILEYS_PATTERN, tweet_string)

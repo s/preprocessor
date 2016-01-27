@@ -48,8 +48,9 @@ class Preprocess:
         return Patterns.RESERVED_WORDS_PATTERN.sub(repl, tweet_string)
 
     def preprocess_emojis(self, tweet_string, repl):
-        tweet_to_clean = tweet_string.decode('utf-8')
-        return Patterns.EMOJIS_PATTERN.sub(repl, tweet_to_clean)
+        if not IS_PYTHON3:
+            tweet_string = tweet_string.decode('utf-8')
+        return Patterns.EMOJIS_PATTERN.sub(repl, tweet_string)
 
     def preprocess_smileys(self, tweet_string, repl):
         return Patterns.SMILEYS_PATTERN.sub(repl, tweet_string)
