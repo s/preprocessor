@@ -18,6 +18,8 @@ Currently supports cleaning, tokenizing and parsing:
 - Emojis
 - Smileys
 
+Supports Python 2.7 and 3.3+
+
 Usage
 =====
 
