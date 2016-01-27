@@ -15,10 +15,11 @@ setup(
     url='https://github.com/s/preprocessor',
     packages=find_packages(),
     classifiers=[
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: 3 - Alpha',
         'Environment :: Console',
+        'Environment :: Web Environment',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: GNU GENERAL PUBLIC License',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Operating System :: MacOS :: MacOS X',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: Implementation :: PyPy',
