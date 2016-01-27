@@ -7,14 +7,15 @@ Preprocessor is a preprocessing library for tweet data written in Python.
 
 When building Machine Learning systems based on tweet data, a preprocessing is required. This library makes it easy to clean, parse or tokenize the tweets.
 
-
-Installation
-===================
-using pip:
-
-.. code-block:: bash
-
-    $ pip install tweet-preprocessor
+Features
+========
+Cleaning, tokenizing and parsing:
++ URLs
++ Hashtags
++ Mentions
++ Reserved words (RT, FAV)
++ Emojis
++ Smileys
 
 Usage
 ===================
@@ -51,3 +52,11 @@ Parsing:
     'https://github.com/s/preprocessor'
     >>> parsed_tweet.urls[0].end_index
     58
+
+Installation
+===================
+using pip:
+
+.. code-block:: bash
+
+    $ pip install tweet-preprocessor
