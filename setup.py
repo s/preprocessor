@@ -7,7 +7,7 @@ with open('README.rst') as f:
 
 setup(
     name='tweet-preprocessor',
-    version='0.2.0',
+    version='0.3.0',
     description='Elegant tweet preprocessing',
     long_description=long_description,
     author='Said Özcan',

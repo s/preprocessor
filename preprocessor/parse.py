@@ -6,11 +6,13 @@ This module includes parse functionality
 """
 
 import re
-from .constants import Patterns
 from .utils import Util
+from .constants import *
 
 class ParseResult:
     urls = None
+    emojis = None
+    smileys = None
     hashtags = None
     mentions = None
     reserved_words = None
@@ -37,11 +39,11 @@ class Parse:
     def parse(self, tweet_string):
         parse_result_obj = ParseResult()
 
-        parser_methods = self.u.get_worker_methods(self, 'parse_')
+        parser_methods = self.u.get_worker_methods(self, PARSE_METHODS_PREFIX)
 
-        for a_cleaner_method in parser_methods:
-            method_to_call = getattr(self, a_cleaner_method)
-            attr = a_cleaner_method.split('_')[1]
+        for a_parser_method in parser_methods:
+            method_to_call = getattr(self, a_parser_method)
+            attr = a_parser_method.split('_')[1]
 
             items = method_to_call(tweet_string)
             setattr(parse_result_obj, attr, items)
@@ -53,7 +55,7 @@ class Parse:
         items = []
 
         for match_object in re.finditer(pattern, string):
-            parse_item = ParseItem(match_object.start(), match_object.end(), match_object.group())
+            parse_item = ParseItem(match_object.start(), match_object.end(), match_object.group().encode('utf-8'))
             items.append(parse_item)
 
         if len(items):
@@ -71,3 +73,9 @@ class Parse:
     def parse_reserved_words(self, tweet_string):
         return self.parser(Patterns.RESERVED_WORDS_PATTERN, tweet_string)
 
+    def parse_emojis(self, tweet_string):
+        tweet_to_clean = tweet_string.decode('utf-8')
+        return self.parser(Patterns.EMOJIS_PATTERN, tweet_to_clean)
+
+    def parse_smileys(self, tweet_string):
+        return self.parser(Patterns.SMILEYS_PATTERN, tweet_string)

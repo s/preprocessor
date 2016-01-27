@@ -8,7 +8,7 @@ This module includes preprocess functionality
 """
 
 import re
-from .constants import Patterns, Functions
+from .constants import *
 from .utils import Util
 
 class Preprocess:
@@ -21,7 +21,7 @@ class Preprocess:
 
     def clean(self, tweet_string, repl):
 
-        cleaner_methods = self.u.get_worker_methods(self, 'preprocess_')
+        cleaner_methods = self.u.get_worker_methods(self, PREPROCESS_METHODS_PREFIX)
 
         for a_cleaner_method in cleaner_methods:
             token = self.get_token_string_from_method_name(a_cleaner_method)
@@ -36,16 +36,23 @@ class Preprocess:
         return tweet_string
 
     def preprocess_urls(self, tweet_string, repl):
-        return re.sub(Patterns.URL_PATTERN, repl, tweet_string)
+        return Patterns.URL_PATTERN.sub(repl, tweet_string)
 
     def preprocess_hashtags(self, tweet_string, repl):
-        return re.sub(Patterns.HASHTAG_PATTERN, repl, tweet_string)
+        return Patterns.HASHTAG_PATTERN.sub(repl, tweet_string)
 
     def preprocess_mentions(self, tweet_string, repl):
-        return re.sub(Patterns.MENTION_PATTERN, repl, tweet_string)
+        return Patterns.MENTION_PATTERN.sub(repl, tweet_string)
 
     def preprocess_reserved_words(self, tweet_string, repl):
-        return re.sub(Patterns.RESERVED_WORDS_PATTERN, repl, tweet_string)
+        return Patterns.RESERVED_WORDS_PATTERN.sub(repl, tweet_string)
+
+    def preprocess_emojis(self, tweet_string, repl):
+        tweet_to_clean = tweet_string.decode('utf-8')
+        return Patterns.EMOJIS_PATTERN.sub(repl, tweet_to_clean)
+
+    def preprocess_smileys(self, tweet_string, repl):
+        return Patterns.SMILEYS_PATTERN.sub(repl, tweet_string)
 
     def remove_unneccessary_characters(self, tweet_string):
         return ' '.join(tweet_string.split())
