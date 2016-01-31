@@ -8,8 +8,8 @@ This module includes preprocess functionality
 """
 
 import re
-from .constants import *
-from .utils import Util
+from .defines import *
+from .utils import Utils
 
 class Preprocess:
 
@@ -17,11 +17,11 @@ class Preprocess:
 
     def __init__(self):
         self.repl = None
-        self.u = Util()
+        self.u = Utils()
 
     def clean(self, tweet_string, repl):
 
-        cleaner_methods = self.u.get_worker_methods(self, PREPROCESS_METHODS_PREFIX)
+        cleaner_methods = self.u.get_worker_methods(self, Defines.PREPROCESS_METHODS_PREFIX)
 
         for a_cleaner_method in cleaner_methods:
             token = self.get_token_string_from_method_name(a_cleaner_method)
@@ -48,7 +48,7 @@ class Preprocess:
         return Patterns.RESERVED_WORDS_PATTERN.sub(repl, tweet_string)
 
     def preprocess_emojis(self, tweet_string, repl):
-        if not IS_PYTHON3:
+        if not Defines.IS_PYTHON3:
             tweet_string = tweet_string.decode('utf-8')
         return Patterns.EMOJIS_PATTERN.sub(repl, tweet_string)
 

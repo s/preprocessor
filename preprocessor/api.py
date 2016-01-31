@@ -11,7 +11,7 @@ This module implements the Preprocessor API.
 
 import sys
 from .preprocess import Preprocess
-from .constants import Functions
+from .defines import Functions, Defines
 from .parse import Parse
 
 preprocessor = Preprocess()
@@ -59,3 +59,14 @@ def parse(tweet_string):
     """
     parsed_tweet_obj = parser.parse(tweet_string)
     return parsed_tweet_obj
+
+def set_options(*args):
+    """Sets desired options for preprocessing`.
+    :param *args: A number of preprocessor.OPT options
+    :return: void
+    :rtype: void
+    Usage::
+      >>> import preprocessor
+      >>> preprocessor.set_options(preprocessor.OPT.URL, preprocessor.OPT.SMILEY)
+    """
+    Defines.FILTERED_METHODS = list(args)

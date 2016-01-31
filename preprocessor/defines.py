@@ -6,22 +6,27 @@ This module includes the constant variables used in Preprocessor
 """
 import re
 import sys
-#from .utils import Util
+from .enum import enum
 
-PREPROCESS_METHODS_PREFIX = 'preprocess_'
-PARSE_METHODS_PREFIX = 'parse_'
-HIGH_PRIORITISED_METHODS = ['urls', 'mentions', 'hashtags', 'emojis', 'smileys']
-IS_PYTHON3 = sys.version_info > (3, 0, 0)
+opts = {
+    'URL':'urls',
+    'MENTION':'mentions',
+    'HASHTAG':'hashtags',
+    'RESERVED':'reserved_words',
+    'EMOJI':'emojis',
+    'SMILEY':'smileys'
+}
+Options = enum(**opts)
+Functions = enum('CLEAN', 'TOKENIZE', 'PARSE')
 
-#Options = Util.enum('URL', 'HASHTAG', 'MENTION', 'HASHTAG', 'EMOJI', 'SMILEY')
 
-class Options:
-    OPT_URL=1
-    OPT_HASHTAG=2
-    OPT_MENTION=3
-    OPT_RESERVED=4
-    OPT_EMOJI=5
-    OPT_SMILEY=6
+class Defines:
+    PARSE_METHODS_PREFIX = 'parse_'
+    FILTERED_METHODS = opts.values()
+    PREPROCESS_METHODS_PREFIX = 'preprocess_'
+    IS_PYTHON3 = sys.version_info > (3, 0, 0)
+    PRIORITISED_METHODS = ['urls', 'mentions', 'hashtags', 'emojis', 'smileys']
+
 
 class Patterns:
     URL_PATTERN=re.compile(r'(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:\'".,<>?\xab\xbb\u201c\u201d\u2018\u2019]))')
@@ -37,8 +42,3 @@ class Patterns:
         EMOJIS_PATTERN = re.compile(u'([\u2600-\u27BF])|([\uD83C][\uDF00-\uDFFF])|([\uD83D][\uDC00-\uDE4F])|([\uD83D][\uDE80-\uDEFF])')
 
     SMILEYS_PATTERN = re.compile(r"(?::|;|=)(?:-)?(?:\)|\(|D|P|S){1,}")
-
-class Functions:
-    CLEAN=1
-    TOKENIZE=2
-    PARSE=3

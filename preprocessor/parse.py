@@ -5,8 +5,9 @@ This module includes parse functionality
 
 """
 
-from .utils import Util
-from .constants import *
+import re
+from .utils import Utils
+from .defines import Defines, Patterns
 
 class ParseResult:
     urls = None
@@ -33,12 +34,12 @@ class ParseItem:
 class Parse:
 
     def __init__(self):
-        self.u = Util()
+        self.u = Utils()
 
     def parse(self, tweet_string):
         parse_result_obj = ParseResult()
 
-        parser_methods = self.u.get_worker_methods(self, PARSE_METHODS_PREFIX)
+        parser_methods = self.u.get_worker_methods(self, Defines.PARSE_METHODS_PREFIX)
 
         for a_parser_method in parser_methods:
             method_to_call = getattr(self, a_parser_method)
@@ -54,7 +55,7 @@ class Parse:
         items = []
 
         for match_object in re.finditer(pattern, string):
-            if not IS_PYTHON3:
+            if not Defines.IS_PYTHON3:
                 parse_item = ParseItem(match_object.start(), match_object.end(), match_object.group().encode('utf-8'))
             else:
                 parse_item = ParseItem(match_object.start(), match_object.end(), match_object.group())
@@ -76,7 +77,7 @@ class Parse:
         return self.parser(Patterns.RESERVED_WORDS_PATTERN, tweet_string)
 
     def parse_emojis(self, tweet_string):
-        if not IS_PYTHON3:
+        if not Defines.IS_PYTHON3:
             tweet_string = tweet_string.decode('utf-8')
         return self.parser(Patterns.EMOJIS_PATTERN, tweet_string)
 
