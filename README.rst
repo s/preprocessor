@@ -56,6 +56,15 @@ Parsing:
     >>> parsed_tweet.urls[0].end_index
     58
 
+Fully customizable:
+^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+    >>> p.set_options(p.OPT.URL, p.OPT.EMOJI)
+    >>> p.clean('Preprocessor is #awesome 👍 https://github.com/s/preprocessor')
+    'Preprocessor is #awesome'
+
 Installation
 ===================
 using pip:

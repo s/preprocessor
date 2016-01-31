@@ -6,11 +6,22 @@ This module includes the constant variables used in Preprocessor
 """
 import re
 import sys
+#from .utils import Util
 
 PREPROCESS_METHODS_PREFIX = 'preprocess_'
 PARSE_METHODS_PREFIX = 'parse_'
-PRIORITISED_METHODS = ['urls']
+HIGH_PRIORITISED_METHODS = ['urls', 'mentions', 'hashtags', 'emojis', 'smileys']
 IS_PYTHON3 = sys.version_info > (3, 0, 0)
+
+#Options = Util.enum('URL', 'HASHTAG', 'MENTION', 'HASHTAG', 'EMOJI', 'SMILEY')
+
+class Options:
+    OPT_URL=1
+    OPT_HASHTAG=2
+    OPT_MENTION=3
+    OPT_RESERVED=4
+    OPT_EMOJI=5
+    OPT_SMILEY=6
 
 class Patterns:
     URL_PATTERN=re.compile(r'(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:\'".,<>?\xab\xbb\u201c\u201d\u2018\u2019]))')
