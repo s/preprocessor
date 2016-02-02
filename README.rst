@@ -69,17 +69,17 @@ Preprocessor will go through all of the options by default unless you specify so
 
 Available Options:
 ^^^^^^^^^^^^^^^^^^
-==============  =================
+==============  ======================
 Option Name	  	Option Short Code
-==============  =================
-URL		  		p.OPT.URL
-Mention   		p.OPT.MENTION
-Hashtag  		p.OPT.HASHTAG
-Reserved Words  p.OPT.RESERVED
-Emoji			p.OPT.EMOJI
-Smiley			p.OPT.SMILEY
-Number			p.OPT.NUMBER
-==============  =================
+==============  ======================
+URL		  		:code:`p.OPT.URL`
+Mention   		:code:`p.OPT.MENTION`
+Hashtag  		:code:`p.OPT.HASHTAG`
+Reserved Words  :code:`p.OPT.RESERVED`
+Emoji			:code:`p.OPT.EMOJI`
+Smiley			:code:`p.OPT.SMILEY`
+Number			:code:`p.OPT.NUMBER`
+==============  ======================
 
 
 Installation
