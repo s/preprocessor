@@ -55,6 +55,9 @@ class Preprocess:
     def preprocess_smileys(self, tweet_string, repl):
         return Patterns.SMILEYS_PATTERN.sub(repl, tweet_string)
 
+    def preprocess_numbers(self, tweet_string, repl):
+        return re.sub(Patterns.NUMBERS_PATTERN, lambda m: m.groups()[0] + repl, tweet_string)
+
     def remove_unneccessary_characters(self, tweet_string):
         return ' '.join(tweet_string.split())
 

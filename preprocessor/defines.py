@@ -14,7 +14,8 @@ opts = {
     'HASHTAG':'hashtags',
     'RESERVED':'reserved_words',
     'EMOJI':'emojis',
-    'SMILEY':'smileys'
+    'SMILEY':'smileys',
+    'NUMBER': 'numbers'
 }
 Options = enum(**opts)
 Functions = enum('CLEAN', 'TOKENIZE', 'PARSE')
@@ -42,3 +43,4 @@ class Patterns:
         EMOJIS_PATTERN = re.compile(u'([\u2600-\u27BF])|([\uD83C][\uDF00-\uDFFF])|([\uD83D][\uDC00-\uDE4F])|([\uD83D][\uDE80-\uDEFF])')
 
     SMILEYS_PATTERN = re.compile(r"(?::|;|=)(?:-)?(?:\)|\(|D|P|S){1,}")
+    NUMBERS_PATTERN = re.compile(r"(^|\s)(\-?\d+(?:\.\d)*|\d+)")

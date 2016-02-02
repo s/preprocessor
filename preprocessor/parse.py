@@ -13,6 +13,7 @@ class ParseResult:
     urls = None
     emojis = None
     smileys = None
+    numbers = None
     hashtags = None
     mentions = None
     reserved_words = None
@@ -52,17 +53,27 @@ class Parse:
 
     def parser(self, pattern, string):
 
-        items = []
+        match_items = []
+        number_match_max_group_count = 2
 
         for match_object in re.finditer(pattern, string):
-            if not Defines.IS_PYTHON3:
-                parse_item = ParseItem(match_object.start(), match_object.end(), match_object.group().encode('utf-8'))
-            else:
-                parse_item = ParseItem(match_object.start(), match_object.end(), match_object.group())
-            items.append(parse_item)
+            start_index = match_object.start()
+            end_index = match_object.end()
 
-        if len(items):
-            return items
+            if Patterns.NUMBERS_PATTERN == pattern and number_match_max_group_count == len(match_object.groups()):
+                match_str = match_object.groups()[1]
+            else:
+                match_str = match_object.group()
+
+            if not Defines.IS_PYTHON3:
+                parse_item = ParseItem(start_index, end_index, match_str.encode('utf-8'))
+            else:
+                parse_item = ParseItem(start_index, end_index, match_str)
+
+            match_items.append(parse_item)
+
+        if len(match_items):
+            return match_items
 
     def parse_urls(self, tweet_string):
         return self.parser(Patterns.URL_PATTERN, tweet_string)
@@ -83,3 +94,6 @@ class Parse:
 
     def parse_smileys(self, tweet_string):
         return self.parser(Patterns.SMILEYS_PATTERN, tweet_string)
+
+    def parse_numbers(self, tweet_string):
+        return self.parser(Patterns.NUMBERS_PATTERN, tweet_string)
