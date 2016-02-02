@@ -42,5 +42,5 @@ class Patterns:
         # UCS-2
         EMOJIS_PATTERN = re.compile(u'([\u2600-\u27BF])|([\uD83C][\uDF00-\uDFFF])|([\uD83D][\uDC00-\uDE4F])|([\uD83D][\uDE80-\uDEFF])')
 
-    SMILEYS_PATTERN = re.compile(r"(?::|;|=)(?:-)?(?:\)|\(|D|P|S){1,}")
+    SMILEYS_PATTERN = re.compile(r"(?:X|:|;|=)(?:-)?(?:\)|\(|O|D|P|S){1,}", re.IGNORECASE)
     NUMBERS_PATTERN = re.compile(r"(^|\s)(\-?\d+(?:\.\d)*|\d+)")
