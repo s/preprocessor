@@ -65,6 +65,23 @@ Fully customizable:
     >>> p.clean('Preprocessor is #awesome 👍 https://github.com/s/preprocessor')
     'Preprocessor is #awesome'
 
+Preprocessor will go through all of the options by default unless you specify some options.
+
+Available Options:
+^^^^^^^^^^^^^^^^^^
+==============  =================
+Option Name	  	Option Short Code
+==============  =================
+URL		  		p.OPT.URL
+Mention   		p.OPT.MENTION
+Hashtag  		p.OPT.HASHTAG
+Reserved Words  p.OPT.RESERVED
+Emoji			p.OPT.EMOJI
+Smiley			p.OPT.SMILEY
+Number			p.OPT.NUMBER
+==============  =================
+
+
 Installation
 ===================
 using pip:
