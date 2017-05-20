@@ -89,3 +89,10 @@ using pip:
 .. code-block:: bash
 
     $ pip install tweet-preprocessor
+
+using manual installation:
+
+.. code-block:: bash
+
+    $ python setup.py build
+    $ python setup.py install
