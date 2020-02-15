@@ -44,3 +44,21 @@ class PreprocessorTest(unittest.TestCase):
         p.set_options(p.OPT.NUMBER)
         cleaned_tweeet = p.clean(tweet)
         self.assertEqual(cleaned_tweeet, 'World population will be in !')
+
+    def test_clean_number_8(self):
+        tweet = "lorem -987 ipsum"
+        p.set_options(p.OPT.NUMBER)
+        cleaned_tweeet = p.clean(tweet)
+        self.assertEqual(cleaned_tweeet, 'lorem ipsum')
+
+    def test_clean_number_9(self):
+        tweet = "lorem -712,917,912,123 ipsum"
+        p.set_options(p.OPT.NUMBER)
+        cleaned_tweeet = p.clean(tweet)
+        self.assertEqual(cleaned_tweeet, 'lorem ipsum')
+
+    def test_clean_number_10(self):
+        tweet = "World population will be 10,000,000,000 in 2100!"
+        p.set_options(p.OPT.NUMBER)
+        cleaned_tweeet = p.clean(tweet)
+        self.assertEqual(cleaned_tweeet, 'World population will be in !')
