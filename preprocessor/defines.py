@@ -31,7 +31,7 @@ class Defines:
 
 class Patterns:
     URL_PATTERN=re.compile(r'(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:\'".,<>?\xab\xbb\u201c\u201d\u2018\u2019]))')
-    HASHTAG_PATTERN = re.compile(r'#\w*')
+    HASHTAG_PATTERN = re.compile(r'#\w‌*')
     MENTION_PATTERN = re.compile(r'@\w*')
     RESERVED_WORDS_PATTERN = re.compile(r'^(RT|FAV)')
 
