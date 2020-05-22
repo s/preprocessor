@@ -75,7 +75,7 @@ Preprocessor currently supports processing `.json` and `.txt` formats. Please se
 
 
 
-### JSON files
+### Example JSON file
 
 ```
 [
@@ -85,7 +85,7 @@ Preprocessor currently supports processing `.json` and `.txt` formats. Please se
 ]
 ```
 
-### Text files
+### Example Text file
 
 ```
 Preprocessor now supports files. https://github.com/s/preprocessor
@@ -93,14 +93,18 @@ Preprocessor now supports files. https://github.com/s/preprocessor
 @RT @Twitter raw text data usually has lots of #residue. http://t.co/g00gl
 ```
 
+
+
+### Usage for JSON and Text files:
+
 ```
 # JSON example
 >>> input_file_name = "sample_json.json"
->>> p.clean_file(file_name, options=[p.OPT.URL, p.OPT.MENTION])
+>>> p.clean_file(file_name, options=[p.OPT.URL, p.OPT.MENTION]) 
 
-# Text example 
-&gt;&gt;&gt; input_file_name = &quot;sample_json.json&quot;
-&gt;&gt;&gt; p.clean_file(file_name, options=[p.OPT.URL, p.OPT.MENTION])
+# Text file example 
+>>> input_file_name = "sample_json.json"
+>>> p.clean_file(file_name, options=[p.OPT.URL, p.OPT.MENTION])
 ```
 
 
