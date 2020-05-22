@@ -3,7 +3,7 @@ Preprocessor
 
 ![image](https://travis-ci.org/s/preprocessor.svg?branch=master)
 
-Preprocessor is a preprocessing library for tweet data written in Python.
+Preprocessor is a preprocessing library for tweet data written in Python. It was written as part of my bachelor thesis in sentiment analysis. Later I extracted it to a library for broader usage.
 
 When building Machine Learning systems based on tweet data, a preprocessing is required. This library makes it easy to clean, parse or tokenize the tweets.
 
@@ -12,14 +12,15 @@ Features
 
 Currently supports cleaning, tokenizing and parsing:
 
--   URLs
--   Hashtags
--   Mentions
--   Reserved words (RT, FAV)
--   Emojis
--   Smileys
+- URLs
+- Hashtags
+- Mentions
+- Reserved words (RT, FAV)
+- Emojis
+- Smileys
+- JSON and .txt file support
 
-Supports Python 2.7 and 3.3+
+Supports Python 2.7 and 3.4+
 
 Usage
 =====
@@ -68,20 +69,54 @@ Fully customizable:
 
 Preprocessor will go through all of the options by default unless you specify some options.
 
+## Processing files:
+
+Preprocessor currently supports processing `.json` and `.txt` formats. Please see below examples for the correct input format.
+
+
+
+### JSON files
+
+```
+[
+    "Preprocessor now supports files. https://github.com/s/preprocessor",
+    "#preprocessing is a cruical part of @ML projects.",
+    "@RT @Twitter raw text data usually has lots of #residue. http://t.co/g00gl"
+]
+```
+
+### Text files
+
+```
+Preprocessor now supports files. https://github.com/s/preprocessor
+#preprocessing is a cruical part of @ML projects.
+@RT @Twitter raw text data usually has lots of #residue. http://t.co/g00gl
+```
+
+```
+# JSON example
+>>> input_file_name = "sample_json.json"
+>>> p.clean_file(file_name, options=[p.OPT.URL, p.OPT.MENTION])
+
+# Text example 
+&gt;&gt;&gt; input_file_name = &quot;sample_json.json&quot;
+&gt;&gt;&gt; p.clean_file(file_name, options=[p.OPT.URL, p.OPT.MENTION])
+```
+
+
+
 Available Options:
 ------------------
 
-|Option Name|Option Short Code|
-|-----------|-----------------|
-|URL|p.OPT.URL|
-|Mention|p.OPT.MENTION|
-|Hashtag|p.OPT.HASHTAG|
-|Reserved Words|p.OPT.RESERVED|
-|Emoji|p.OPT.EMOJI|
-|Smiley|:code:p.OPT.SMILEY|
-|Number|:code:p.OPT.NUMBER|
-
-Available Options:
+| Option Name    | Option Short Code |
+| -------------- | ----------------- |
+| URL            | p.OPT.URL         |
+| Mention        | p.OPT.MENTION     |
+| Hashtag        | p.OPT.HASHTAG     |
+| Reserved Words | p.OPT.RESERVED    |
+| Emoji          | p.OPT.EMOJI       |
+| Smiley         | p.OPT.SMILEY      |
+| Number         | p.OPT.NUMBER      |
 
 Installation
 ============
