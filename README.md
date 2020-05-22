@@ -103,7 +103,7 @@ Preprocessor now supports files. https://github.com/s/preprocessor
 >>> p.clean_file(file_name, options=[p.OPT.URL, p.OPT.MENTION]) 
 
 # Text file example 
->>> input_file_name = "sample_json.json"
+>>> input_file_name = "sample_txt.txt"
 >>> p.clean_file(file_name, options=[p.OPT.URL, p.OPT.MENTION])
 ```
 
