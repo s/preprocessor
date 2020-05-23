@@ -10,7 +10,7 @@ setup(
     description='Elegant tweet preprocessing',
     long_description=long_description,
     author='Said Özcan',
-    author_email='saidozcn@gmail.com',
+    author_email='',
     url='https://github.com/s/preprocessor',
     packages=find_packages(),
     classifiers=[
