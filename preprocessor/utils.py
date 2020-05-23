@@ -125,7 +125,7 @@ def write_to_json_file(file_path, file_contents):
     :rtype: str
     :raises: This method raises OSError if it cannot write to file_path.
     """
-    with open(file_path, 'w', encoding='utf-8') as handler:
+    with open(file_path, mode='w', encoding='utf-8') as handler:
         json.dump(file_contents, handler)
     return file_path
 
@@ -140,7 +140,7 @@ def write_to_text_file(file_path, file_contents):
     :rtype: void
     :raises: This method raises OSError if it cannot write to file_path.
     """
-    with open(file_path, 'w', encoding='utf-8') as handler:
+    with open(file_path, mode='w', encoding='utf-8') as handler:
         for line in file_contents:
             handler.write("%s\n" % line)
     return file_path
