@@ -5,12 +5,13 @@ preprocessor.utils
 This module includes utility methods which are used in Preprocessor
 """
 
-from .defines import Defines, InputFileType
-from os import path
+import sys
 import json
 import random
 import string
+from os import path
 from datetime import datetime
+from .defines import Defines, InputFileType
 
 
 def get_worker_methods(obj, prefix):
