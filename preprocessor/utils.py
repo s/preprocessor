@@ -159,7 +159,7 @@ def generate_random_file_name(file_path, add_timestamp=False):
 
     random_file_name = generate_random_alphanumeric_string()
     if add_timestamp:
-        timestamp_str = get_current_timestamp("%d-%b-%Y_(%H:%M:%S.%f)")
+        timestamp_str = get_current_timestamp("%d%m%Y_%H%M%S%f")
         random_file_name = timestamp_str + "_" + random_file_name
 
     file_name = random_file_name + "_" + file_path_components[-1]
