@@ -19,9 +19,12 @@ class UtilsTest(unittest.TestCase):
         '#emoji #smiley 😀😍 https://emojipedia.org'
     ]
     _current_dir = ""
+    _output_file_name_prefix = "test_utils_output_"
+    _artifact_dir_name = "artifacts"
 
     def setUp(self):
-        self._current_dir = os.getcwd()
+        self._current_dir = os.path.dirname(__file__)
+        self._artifacts_dir = os.path.join(self._current_dir, self._artifact_dir_name)
 
     def test_get_file_extension(self):
         self.assertEqual(p.get_file_extension("file.txt"), ".txt")
@@ -43,7 +46,8 @@ class UtilsTest(unittest.TestCase):
             protected_directory = "C:\\Windows\\System32"
         else:
             protected_directory = "/"
-        full_input_path = os.path.join(protected_directory, "test_write_to_output_file.json")
+        output_file_name = self._output_file_name_prefix + "test_write_to_output_file.json"
+        full_input_path = os.path.join(protected_directory, output_file_name)
 
         # Test file wasn't created due to protected directory
         self.assertRaises(OSError, p.write_to_json_file, full_input_path, {})
@@ -53,7 +57,9 @@ class UtilsTest(unittest.TestCase):
         output_path = self._write_test_contents_to_cur_dir(p.InputFileType.json)
         self.assertTrue(os.path.exists(output_path))
 
-        full_input_path = os.path.join(self._current_dir, "dictionary.json")
+        output_file_name = self._output_file_name_prefix + "dictionary.json"
+        full_output_file_path = os.path.join(self._artifacts_dir, output_file_name)
+        full_input_path = os.path.join(self._current_dir, full_output_file_path)
         output_path = p.write_to_json_file(full_input_path, self._test_dictionary)
         file_contents = p.get_json_file_contents(output_path)
 
@@ -71,8 +77,9 @@ class UtilsTest(unittest.TestCase):
         p.are_lists_equal(file_contents, self._test_file_contents)
 
     def test_generate_random_file_name(self):
-        current_dir = os.getcwd()
-        file_path = os.path.join(current_dir, "test_generate_random_file_name.json")
+        output_file_name = self._output_file_name_prefix + "test_generate_random_file_name.json"
+        full_output_file_path = os.path.join(self._artifacts_dir, output_file_name)
+        file_path = os.path.join(self._current_dir, full_output_file_path)
         gen_path = p.generate_random_file_name(file_path)
         self.assertNotEqual(file_path, gen_path)
 
@@ -114,7 +121,8 @@ class UtilsTest(unittest.TestCase):
         return not platform.system() in ["Linux", "Darwin"]
 
     def _write_test_contents_to_cur_dir(self, ext):
-        full_input_path = os.path.join(self._current_dir, "_write_test_contents_to_cur_dir" + ext)
+        output_file_name = self._output_file_name_prefix + "_write_test_contents_to_cur_dir" + ext
+        full_input_path = os.path.join(self._artifacts_dir, output_file_name)
         if p.InputFileType.json == ext:
             return p.write_to_json_file(full_input_path, self._test_file_contents)
         elif p.InputFileType.text == ext:

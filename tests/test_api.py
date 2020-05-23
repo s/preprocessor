@@ -4,7 +4,9 @@ import os
 import unittest
 import preprocessor as p
 
+
 class PreprocessorTest(unittest.TestCase):
+    _artifacts_dir_name = "artifacts"
 
     def test_clean(self):
         tweet = "Hello there! @pyistanbul #packathon was awesome 😀. http://packathon.org"
@@ -51,10 +53,11 @@ class PreprocessorTest(unittest.TestCase):
         self.assertIsNotNone(parsed_tweet.urls)
 
     def test_clean_file(self):
-        current_dir = os.getcwd()
+        current_dir = os.path.dirname(__file__)
+        artifacts_dir = os.path.join(current_dir, self._artifacts_dir_name)
         extensions = [p.InputFileType.json, p.InputFileType.text]
         for ext in extensions:
-            full_input_path = os.path.join(current_dir, "clean_file_sample" + ext)
+            full_input_path = os.path.join(artifacts_dir, "clean_file_sample" + ext)
             raw_data = p.get_file_contents(full_input_path)
             self.assertIsNotNone(raw_data)
 
