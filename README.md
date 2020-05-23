@@ -18,14 +18,15 @@ Currently supports cleaning, tokenizing and parsing:
 - Reserved words (RT, FAV)
 - Emojis
 - Smileys
+- Number
 - `JSON` and `.txt` file support
 
-Preprocessor `v0.6.0` supports `Python 2.7 and 3.5+ on Linux, macOS and Windows`. Tests run on following setups:
+Preprocessor `v0.6.0` supports `Python 3.4+ on Linux, macOS and Windows`. Tests run on following setups:
 
 ```
-Linux Xenial with Python 2.7, 3.5, 3.6, 3.7
+Linux Xenial with Python 3.4.8, 3.5.6, 3.6.7, 3.7.1, 3.8.0, 3.8.3+
 macOS 10.14 with Python 3.7.5, 3.8.0
-Windows 10.0.17134 with Python 2.7, 3.5.4, 3.6.8
+Windows 10.0.17134 with Python 3.5.4, 3.6.8
 ```
 
 Usage

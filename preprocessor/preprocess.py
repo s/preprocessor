@@ -7,7 +7,6 @@ This module includes preprocess functionality
 
 """
 
-import re
 from .defines import *
 from .utils import get_worker_methods
 

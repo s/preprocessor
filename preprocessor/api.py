@@ -9,7 +9,6 @@ This module implements the Preprocessor API.
 
 """
 
-import sys
 from .preprocess import Preprocess
 from .defines import Functions, Defines
 from .parse import Parse

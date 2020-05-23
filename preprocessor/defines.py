@@ -5,7 +5,6 @@ preprocessor.constants
 This module includes the constant variables used in Preprocessor
 """
 import re
-import sys
 from .enum import enum
 
 opts = {

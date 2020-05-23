@@ -5,7 +5,6 @@ preprocessor.utils
 This module includes utility methods which are used in Preprocessor
 """
 
-import sys
 import json
 import random
 import string
