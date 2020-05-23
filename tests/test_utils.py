@@ -43,7 +43,7 @@ class UtilsTest(unittest.TestCase):
         # Test protected directories
         protected_directory = ""
         if self._is_running_on_windows():
-            protected_directory = "C:\\Windows\\System32"
+            protected_directory = "C:\\Windows\\"
         else:
             protected_directory = "/"
         output_file_name = self._output_file_name_prefix + "test_write_to_output_file.json"
