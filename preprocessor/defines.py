@@ -14,7 +14,8 @@ opts = {
     'RESERVED': 'reserved_words',
     'EMOJI': 'emojis',
     'SMILEY': 'smileys',
-    'NUMBER':  'numbers'
+    'NUMBER':  'numbers',
+    'ESCAPE_CHAR': 'escape_chars'
 }
 Options = enum(**opts)
 Functions = enum('CLEAN', 'TOKENIZE', 'PARSE')

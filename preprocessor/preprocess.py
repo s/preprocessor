@@ -55,6 +55,17 @@ class Preprocess:
     def preprocess_numbers(self, tweet_string, repl):
         return re.sub(Patterns.NUMBERS_PATTERN, lambda m: m.groups()[0] + repl, tweet_string)
 
+    def preprocess_escape_chars(self, tweet_string, repl):
+        """
+        This method processes escape chars using ASCII control characters.
+        :param tweet_string: input string which will be used to remove escape chars
+        :param repl: unused for this method
+        :return: processed string
+        """
+        escapes = ''.join([chr(char) for char in range(1, 32)])
+        translator = str.maketrans('', '', escapes)
+        return tweet_string.translate(translator)
+
     def remove_unneccessary_characters(self, tweet_string):
         return ' '.join(tweet_string.split())
 
