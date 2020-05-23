@@ -68,4 +68,4 @@ class Patterns:
         EMOJIS_PATTERN = re.compile(u'([\u2600-\u27BF])|([\uD83C][\uDF00-\uDFFF])|([\uD83D][\uDC00-\uDE4F])|([\uD83D][\uDE80-\uDEFF])')
 
     EMOTICONS_PATTERN = re.compile(r"(\s)(?:X|:|;|=)(?:-)?(?:\)+|\(|O|D|P|S|\\|\/)(\s){1,}", re.IGNORECASE)
-    NUMBERS_PATTERN = re.compile(r"(^|\s)(\-?\d+(?:\.\d)*|\d+)")
+    NUMBERS_PATTERN = re.compile(r"(^|\s)(-?\d+([.,]?\d+)*)")
