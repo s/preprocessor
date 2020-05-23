@@ -87,7 +87,7 @@ class Parse:
         return self.parser(Patterns.EMOJIS_PATTERN, tweet_string)
 
     def parse_smileys(self, tweet_string):
-        return self.parser(Patterns.EMOTICONS_PATTERN, tweet_string)
+        return self.parser(Patterns.SMILEYS_PATTERN, tweet_string)
 
     def parse_numbers(self, tweet_string):
         return self.parser(Patterns.NUMBERS_PATTERN, tweet_string)

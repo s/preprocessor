@@ -51,7 +51,7 @@ class Preprocess:
         return processed.encode('ascii', 'ignore').decode('ascii')
 
     def preprocess_smileys(self, tweet_string, repl):
-        return Patterns.EMOTICONS_PATTERN.sub(repl, tweet_string)
+        return Patterns.SMILEYS_PATTERN.sub(repl, tweet_string)
 
     def preprocess_numbers(self, tweet_string, repl):
         return re.sub(Patterns.NUMBERS_PATTERN, lambda m: m.groups()[0] + repl, tweet_string)
