@@ -40,17 +40,15 @@ class UtilsTest(unittest.TestCase):
         invalid_dir = os.path.join(self._current_dir, "/a/b/c")
         self.assertRaises(ValueError, p.write_to_output_file, invalid_dir, [])
 
-        # Test protected directories
-        protected_directory = ""
-        if self._is_running_on_windows():
-            protected_directory = "C:\\Windows\\"
-        else:
+        # Test protected directories on macOS and Linux
+        # (Travis CI disables Windows Defender)
+        if not self._is_running_on_windows():
             protected_directory = "/"
-        output_file_name = self._output_file_name_prefix + "test_write_to_output_file.json"
-        full_input_path = os.path.join(protected_directory, output_file_name)
+            output_file_name = self._output_file_name_prefix + "test_write_to_output_file.json"
+            full_input_path = os.path.join(protected_directory, output_file_name)
 
-        # Test file wasn't created due to protected directory
-        self.assertRaises(OSError, p.write_to_json_file, full_input_path, {})
+            # Test file wasn't created due to protected directory
+            self.assertRaises(OSError, p.write_to_json_file, full_input_path, {})
 
     def test_write_to_json_file(self):
         # Test file was created
