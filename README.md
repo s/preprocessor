@@ -3,7 +3,7 @@ Preprocessor
 
 ![image](https://travis-ci.org/s/preprocessor.svg?branch=master)
 
-Preprocessor is a preprocessing library for tweet data written in Python. It was written as part of my bachelor thesis in sentiment analysis. Later I extracted it to a library for broader usage.
+Preprocessor is a preprocessing library for tweet data written in Python.
 
 When building Machine Learning systems based on tweet data, a preprocessing is required. This library makes it easy to clean, parse or tokenize the tweets.
 
