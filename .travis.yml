@@ -16,6 +16,7 @@ matrix:
       osx_image: xcode10.2  # Python 3.7.5 running on macOS 10.14.3
       language: shell       # 'language: python' is an error on Travis CI macOS
       before_install:
+        - sudo chown -R travis:travis $TRAVIS_BUILD_DIR
         - python3 --version
         - pip3 install -U pip
         - pip3 install -U pytest
@@ -28,6 +29,7 @@ matrix:
       osx_image: xcode11.3  # Python 3.8.0 running on macOS 10.14.6
       language: shell       # 'language: python' is an error on Travis CI macOS
       before_install:
+        - sudo chown -R travis:travis $TRAVIS_BUILD_DIR
         - python3 --version
         - pip3 install -U pip
         - pip3 install -U pytest
@@ -41,6 +43,7 @@ matrix:
       os: windows           # Windows 10.0.17134 N/A Build 17134
       language: shell # 'language: python' errors Travis CI Windows
       before_install:
+        - sudo chown -R travis:travis $TRAVIS_BUILD_DIR
         - choco install python2
         - python --version
         - python -m pip install --upgrade pip
@@ -52,6 +55,7 @@ matrix:
       os: windows           # Windows 10.0.17134 N/A Build 17134
       language: shell       # 'language: python' is an error on Travis CI Windows
       before_install:
+        - sudo chown -R travis:travis $TRAVIS_BUILD_DIR
         - choco install python --version 3.5.4
         - python --version
         - python -m pip install --upgrade pip
@@ -63,6 +67,7 @@ matrix:
       os: windows           # Windows 10.0.17134 N/A Build 17134
       language: shell       # 'language: python' is an error on Travis CI Windows
       before_install:
+        - sudo chown -R travis:travis $TRAVIS_BUILD_DIR
         - choco install python --version 3.6.8
         - python --version
         - python -m pip install --upgrade pip
