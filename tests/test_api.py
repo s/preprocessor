@@ -35,6 +35,12 @@ class PreprocessorTest(unittest.TestCase):
         cleaned_tweet = p.clean(tweet)
         self.assertEqual('()', cleaned_tweet)
 
+        tweet = 'check this link: https://fa.wikipedia.org/wiki/%D8%AD%D9%85%D9%84%D9%87_%D8%A8%D9%87_%DA%A9%D9%88%DB%8C' \
+                '_%D8%AF%D8%A7%D9%86%D8%B4%DA%AF%D8%A7%D9%87_%D8%AA%D9%87%D8%B1%D8%A7%D9%86_(%DB%B1%DB%B8%E2%80%93%DB%B2%' \
+                'DB%B3_%D8%AA%DB%8C%D8%B1_%DB%B1%DB%B3%DB%B7%DB%B8) …'
+        cleaned_tweet = p.clean(tweet)
+        self.assertEqual('check this link: …', cleaned_tweet)
+
     def test_clean_smileys(self):
         tweet = "😀 :) expression experience zoxo xoyo 💁‍♂️🙍‍♀️🙍‍♀️🧢🐄🧑‍🤝‍🧑"
         p.set_options(p.OPT.SMILEY, p.OPT.EMOJI)
