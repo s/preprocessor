@@ -1,17 +1,24 @@
 # -*- coding: utf-8 -*-
 
-import io
+import os
 import unittest
-
 import preprocessor as p
 
+
 class PreprocessorTest(unittest.TestCase):
+    _artifacts_dir_name = "artifacts"
 
     def test_clean(self):
-        tweet = "Hello there! @pyistanbul #packathon was awesome 😀. http://packathon.org"
+        tweet = "Hello there! @pyistanbul #packathon was awesome exp 😀. http://packathon.org"
         p.set_options(p.OPT.URL, p.OPT.HASHTAG, p.OPT.MENTION, p.OPT.EMOJI, p.OPT.SMILEY)
         cleaned_tweeet = p.clean(tweet)
-        self.assertEqual(cleaned_tweeet, 'Hello there! was awesome .')
+        self.assertEqual(cleaned_tweeet, 'Hello there! was awesome exp .')
+
+    def test_clean_smileys(self):
+        tweet = "😀 :) expression experience zoxo xoyo 💁‍♂️🙍‍♀️🙍‍♀️🧢🐄🧑‍🤝‍🧑"
+        p.set_options(p.OPT.SMILEY, p.OPT.EMOJI)
+        cleaned_tweet = p.clean(tweet)
+        self.assertEqual('expression experience zoxo xoyo', cleaned_tweet)
 
     def test_tokenize(self):
         tweet = 'Packathon was a really #nice :) challenging 👌. @packathonorg http://packathon.org'
@@ -50,6 +57,45 @@ class PreprocessorTest(unittest.TestCase):
 
         self.assertIsNone(parsed_tweet.hashtags)
         self.assertIsNotNone(parsed_tweet.urls)
-        
+
+    def test_clean_file(self):
+        current_dir = os.path.dirname(__file__)
+        artifacts_dir = os.path.join(current_dir, self._artifacts_dir_name)
+        extensions = [p.InputFileType.json, p.InputFileType.text]
+        for ext in extensions:
+            full_input_path = os.path.join(artifacts_dir, "clean_file_sample" + ext)
+            raw_data = p.get_file_contents(full_input_path)
+            self.assertIsNotNone(raw_data)
+
+            # Test all option
+            check_against = self._get_test_data_for_option(raw_data)
+            self._test_clean_file(full_input_path, check_against)
+
+            # Test individual options
+            options = [
+                p.OPT.URL,
+                p.OPT.MENTION,
+                p.OPT.HASHTAG,
+                p.OPT.RESERVED,
+                p.OPT.EMOJI,
+                p.OPT.SMILEY,
+                p.OPT.NUMBER
+            ]
+            for opt in options:
+                check_against = self._get_test_data_for_option(raw_data, opt)
+                self._test_clean_file(full_input_path, check_against, opt)
+
+    def _test_clean_file(self, full_input_path, check_against, *options):
+        output_path = p.clean_file(full_input_path, True, options)
+        self.assertTrue(os.path.exists(output_path))
+        clean_content = p.get_file_contents(output_path)
+        p.are_lists_equal(clean_content, check_against)
+
+    def _get_test_data_for_option(self, raw_data, *options):
+        clean_data = []
+        for d in raw_data:
+            clean_data.append(p.clean(d))
+        return clean_data
+
 if __name__ == '__main__':
     unittest.main()
