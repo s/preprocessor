@@ -4,6 +4,7 @@ from setuptools import setup, find_packages
 with open('README.md', encoding='utf-8', errors='ignore') as f:
     long_description = f.read()
 
+
 setup(
     name='tweet-preprocessor',
     version='0.6.0',
@@ -20,8 +21,18 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Operating System :: MacOS :: MacOS X',
-        'Programming Language :: Python :: 3.5',
+        'Operating System :: Microsoft :: Windows',
+        'Operating System :: POSIX :: Linux',
+        'Programming Language :: Python :: 3.4.8',
+        'Programming Language :: Python :: 3.5.4',
+        'Programming Language :: Python :: 3.5.6',
+        'Programming Language :: Python :: 3.6.7',
+        'Programming Language :: Python :: 3.6.8',
+        'Programming Language :: Python :: 3.7.1',
+        'Programming Language :: Python :: 3.7.5',
+        'Programming Language :: Python :: 3.8.0',
+        'Programming Language :: Python :: 3.8.3',
         'Programming Language :: Python :: Implementation :: PyPy',
     ],
-    keywords='machine learning, preprocessing, tweet',
+    keywords='machine learning, preprocessing, processing, tweet, tokenizing, dimensionality reduction',
 )
