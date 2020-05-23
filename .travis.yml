@@ -2,12 +2,12 @@ language: python
 # ===== Linux ======
 dist: xenial
 python:
-  - 3.3.7
-  - 3.4.10
-  - 3.5.9
-  - 3.6.10
-  - 3.7.7
-  - 3.8.3
+  - "3.4"
+  - "3.5"
+  - "3.6"
+  - "3.7"
+  - "3.8"
+  - "3.8-dev"
 install: "pip install -r requirements/requirements.txt "
 script: python -m unittest discover
 
