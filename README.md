@@ -83,9 +83,9 @@ Preprocessor currently supports processing `.json` and `.txt` formats. Please se
 
 ```json
 [
-    "Preprocessor now supports files. https://github.com/s/preprocessor",
-    "#preprocessing is a cruical part of @ML projects.",
-    "@RT @Twitter raw text data usually has lots of #residue. http://t.co/g00gl"
+    "Preprocessor now supports files. https://github.com/s/preprocessor",
+    "#preprocessing is a cruical part of @ML projects.",
+    "@RT @Twitter raw text data usually has lots of #residue. http://t.co/g00gl"
 ]
 ```
 
@@ -103,8 +103,7 @@ Preprocessor now supports files. https://github.com/s/preprocessor
 # JSON example
 >>> input_file_name = "sample_json.json"
 >>> p.clean_file(file_name, options=[p.OPT.URL, p.OPT.MENTION]) 
-Saved the cleaned tweets to:/tests/artifacts/24052020_013451892752_
-vkeCMTwBEMmX_clean_file_sample.json
+Saved the cleaned tweets to:/tests/artifacts/24052020_013451892752_vkeCMTwBEMmX_clean_file_sample.json
 ```
 
 ### Preprocessing text file:
@@ -113,13 +112,8 @@ vkeCMTwBEMmX_clean_file_sample.json
 # Text file example 
 >>> input_file_name = "sample_txt.txt"
 >>> p.clean_file(file_name, options=[p.OPT.URL, p.OPT.MENTION])
-Saved the cleaned tweets to:/tests/artifacts/24052020_013451908865_
-TE9DWX1BjFws_clean_file_sample.txt
+Saved the cleaned tweets to:/tests/artifacts/24052020_013451908865_TE9DWX1BjFws_clean_file_sample.txt
 ```
-
-
-
-
 
 ### Available Options:
 
