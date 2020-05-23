@@ -1,4 +1,8 @@
 # Byte-compiled / optimized / DLL files
+tests/artifacts/*
+!tests/artifacts/clean_file_sample.json
+!tests/artifacts/clean_file_sample.txt
+.DS_Store
 .python-version
 __pycache__/
 *.py[cod]
