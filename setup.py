@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from setuptools import setup, find_packages
 
-with open('README', encoding='utf-8', errors='ignore') as f:
+with open('README.md', encoding='utf-8', errors='ignore') as f:
     long_description = f.read()
 
 setup(
