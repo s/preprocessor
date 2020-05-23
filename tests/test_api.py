@@ -56,6 +56,7 @@ class PreprocessorTest(unittest.TestCase):
         for ext in extensions:
             full_input_path = os.path.join(current_dir, "clean_file_sample" + ext)
             raw_data = p.get_file_contents(full_input_path)
+            self.assertIsNotNone(raw_data)
 
             # Test all option
             check_against = self._get_test_data_for_option(raw_data)
