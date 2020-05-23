@@ -32,7 +32,6 @@ class Defines:
     PARSE_METHODS_PREFIX = 'parse_'
     FILTERED_METHODS = opts.values()
     PREPROCESS_METHODS_PREFIX = 'preprocess_'
-    IS_PYTHON3 = sys.version_info > (3, 0, 0)
     PRIORITISED_METHODS = ['urls', 'mentions', 'hashtags', 'emojis', 'smileys']
 
 
@@ -68,5 +67,5 @@ class Patterns:
         # UCS-2
         EMOJIS_PATTERN = re.compile(u'([\u2600-\u27BF])|([\uD83C][\uDF00-\uDFFF])|([\uD83D][\uDC00-\uDE4F])|([\uD83D][\uDE80-\uDEFF])')
 
-    SMILEYS_PATTERN = re.compile(r"(?:X|:|;|=)(?:-)?(?:\)|\(|O|D|P|S){1,}", re.IGNORECASE)
+    EMOTICONS_PATTERN = re.compile(r"(\s)(?:X|:|;|=)(?:-)?(?:\)+|\(|O|D|P|S|\\|\/)(\s){1,}", re.IGNORECASE)
     NUMBERS_PATTERN = re.compile(r"(^|\s)(\-?\d+(?:\.\d)*|\d+)")

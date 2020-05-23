@@ -65,11 +65,7 @@ class Parse:
             else:
                 match_str = match_object.group()
 
-            if not Defines.IS_PYTHON3:
-                parse_item = ParseItem(start_index, end_index, match_str.encode('utf-8'))
-            else:
-                parse_item = ParseItem(start_index, end_index, match_str)
-
+            parse_item = ParseItem(start_index, end_index, match_str)
             match_items.append(parse_item)
 
         if len(match_items):
@@ -88,12 +84,10 @@ class Parse:
         return self.parser(Patterns.RESERVED_WORDS_PATTERN, tweet_string)
 
     def parse_emojis(self, tweet_string):
-        if not Defines.IS_PYTHON3:
-            tweet_string = tweet_string.decode('utf-8')
         return self.parser(Patterns.EMOJIS_PATTERN, tweet_string)
 
     def parse_smileys(self, tweet_string):
-        return self.parser(Patterns.SMILEYS_PATTERN, tweet_string)
+        return self.parser(Patterns.EMOTICONS_PATTERN, tweet_string)
 
     def parse_numbers(self, tweet_string):
         return self.parser(Patterns.NUMBERS_PATTERN, tweet_string)

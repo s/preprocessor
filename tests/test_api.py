@@ -9,10 +9,16 @@ class PreprocessorTest(unittest.TestCase):
     _artifacts_dir_name = "artifacts"
 
     def test_clean(self):
-        tweet = "Hello there! @pyistanbul #packathon was awesome 😀. http://packathon.org"
+        tweet = "Hello there! @pyistanbul #packathon was awesome exp 😀. http://packathon.org"
         p.set_options(p.OPT.URL, p.OPT.HASHTAG, p.OPT.MENTION, p.OPT.EMOJI, p.OPT.SMILEY)
         cleaned_tweeet = p.clean(tweet)
-        self.assertEqual(cleaned_tweeet, 'Hello there! was awesome .')
+        self.assertEqual(cleaned_tweeet, 'Hello there! was awesome exp .')
+
+    def test_clean_smileys(self):
+        tweet = "😀 :) expression experience zoxo xoyo 💁‍♂️🙍‍♀️🙍‍♀️🧢🐄🧑‍🤝‍🧑"
+        p.set_options(p.OPT.SMILEY, p.OPT.EMOJI)
+        cleaned_tweet = p.clean(tweet)
+        self.assertEqual('expression experience zoxo xoyo', cleaned_tweet)
 
     def test_tokenize(self):
         tweet = 'Packathon was a really #nice :) challenging 👌. @packathonorg http://packathon.org'
