@@ -113,6 +113,7 @@ class PreprocessorTest(unittest.TestCase):
                 self._test_clean_file(full_input_path, check_against, opt)
 
     def test_escape_chars(self):
+        p.set_options(p.OPT.ESCAPE_CHAR)
         input_str = u"\x01\x02\x03\x04I \x05\x06\x07\x10\x11have \x12\x13\x14" \
                     "\x15\x16\x17\x20escaped!\a\b\n\r\t\b\f"
         cleaned_str = p.clean(input_str)
