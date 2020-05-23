@@ -11,8 +11,29 @@ class PreprocessorTest(unittest.TestCase):
     def test_clean(self):
         tweet = "Hello there! @pyistanbul #packathon was awesome exp 😀. http://packathon.org"
         p.set_options(p.OPT.URL, p.OPT.HASHTAG, p.OPT.MENTION, p.OPT.EMOJI, p.OPT.SMILEY)
-        cleaned_tweeet = p.clean(tweet)
-        self.assertEqual(cleaned_tweeet, 'Hello there! was awesome exp .')
+        cleaned_tweet = p.clean(tweet)
+        self.assertEqual(cleaned_tweet, 'Hello there! was awesome exp .')
+
+    def test_clean_urls(self):
+        tweet = 'canbe foundathttp://www.osp.gatech.edu/rates/(http://www.osp.gatech.edu/rates/).'
+        p.set_options(p.OPT.URL)
+        cleaned_tweet = p.clean(tweet)
+        self.assertEqual("canbe foundat.", cleaned_tweet)
+
+        tweet = 'Nature：先日フランスで起きた臨床試験事故https://t.co/aHk5ok9CDg 原因究明まだなので早急な印象がするけど、低用量投与を1回' \
+                'やった後で、(別のボランティアに）高用量の投与とかしてる試験方式にも問題があるだろうみたいなことを書いてる'
+        cleaned_tweet = p.clean(tweet)
+        self.assertEqual('Nature：先日フランスで起きた臨床試験事故 原因究明まだなので早急な印象がするけど、'
+                         '低用量投与を1回やった後で、(別のボランティアに）高用量の投与とかしてる試験方式にも問題があるだろうみたいなことを書いてる',
+                         cleaned_tweet)
+
+        tweet = '[https://link.springer.com/article/10.1007/s10940\\-016\\-9314\\-9]'
+        cleaned_tweet = p.clean(tweet)
+        self.assertEqual('[]', cleaned_tweet)
+
+        tweet = '(https://link.springer.com/article/10.1007/s10940-016-9314-9)'
+        cleaned_tweet = p.clean(tweet)
+        self.assertEqual('()', cleaned_tweet)
 
     def test_clean_smileys(self):
         tweet = "😀 :) expression experience zoxo xoyo 💁‍♂️🙍‍♀️🙍‍♀️🧢🐄🧑‍🤝‍🧑"
