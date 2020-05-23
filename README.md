@@ -21,6 +21,7 @@ Currently supports cleaning, tokenizing and parsing:
 - `JSON` and `.txt` file support
 
 Preprocessor `v0.6.0` supports `Python 2.7 and 3.5+ on Linux, macOS and Windows`. Tests run on following setups:
+
 ```
 Linux Xenial with Python 2.7, 3.5, 3.6, 3.7
 macOS 10.14 with Python 3.7.5, 3.8.0
@@ -78,8 +79,6 @@ Preprocessor will go through all of the options by default unless you specify so
 
 Preprocessor currently supports processing `.json` and `.txt` formats. Please see below examples for the correct input format.
 
-
-
 ### Example JSON file
 
 ```
@@ -98,8 +97,6 @@ Preprocessor now supports files. https://github.com/s/preprocessor
 @RT @Twitter raw text data usually has lots of #residue. http://t.co/g00gl
 ```
 
-
-
 ### Usage for JSON and Text files:
 
 ```
@@ -112,10 +109,7 @@ Preprocessor now supports files. https://github.com/s/preprocessor
 >>> p.clean_file(file_name, options=[p.OPT.URL, p.OPT.MENTION])
 ```
 
-
-
-Available Options:
-------------------
+### Available Options:
 
 | Option Name    | Option Short Code |
 | -------------- | ----------------- |
@@ -142,3 +136,15 @@ using manual installation:
 $ python setup.py build
 $ python setup.py install
 ```
+
+# Contributing
+
+Are you willing to contribute to preprocessor? That's great! Please follow below steps to contribute to this project:
+
+1. Create a bug report or a feature idea using the templates on Issues page.
+
+2. Fork the repository and make your changes.
+
+3. Open a PR and make sure your PR has tests and all the checks pass. 
+
+4. And that's all!
