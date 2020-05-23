@@ -3,7 +3,7 @@ Preprocessor
 
 ![image](https://travis-ci.org/s/preprocessor.svg?branch=master)
 
-Preprocessor is a preprocessing library for tweet data written in Python.
+Preprocessor is a preprocessing library for tweet data written in Python. It was written as part of my bachelor thesis in sentiment analysis. Later I extracted it to a library for broader usage.
 
 When building Machine Learning systems based on tweet data, a preprocessing is required. This library makes it easy to clean, parse or tokenize the tweets.
 
@@ -18,15 +18,14 @@ Currently supports cleaning, tokenizing and parsing:
 - Reserved words (RT, FAV)
 - Emojis
 - Smileys
-- Number
 - `JSON` and `.txt` file support
 
-Preprocessor `v0.6.0` supports `Python 3.4+ on Linux, macOS and Windows`. Tests run on following setups:
+Preprocessor `v0.6.0` supports `Python 2.7 and 3.5+ on Linux, macOS and Windows`. Tests run on following setups:
 
 ```
-Linux Xenial with Python 3.4.8, 3.5.6, 3.6.7, 3.7.1, 3.8.0, 3.8.3+
-macOS with Python 3.7.5, 3.8.0
-Windows with Python 3.5.4, 3.6.8
+Linux Xenial with Python 2.7, 3.5, 3.6, 3.7
+macOS 10.14 with Python 3.7.5, 3.8.0
+Windows 10.0.17134 with Python 2.7, 3.5.4, 3.6.8
 ```
 
 Usage
@@ -82,7 +81,7 @@ Preprocessor currently supports processing `.json` and `.txt` formats. Please se
 
 ### Example JSON file
 
-```
+```json
 [
     "Preprocessor now supports files. https://github.com/s/preprocessor",
     "#preprocessing is a cruical part of @ML projects.",
@@ -98,17 +97,29 @@ Preprocessor now supports files. https://github.com/s/preprocessor
 @RT @Twitter raw text data usually has lots of #residue. http://t.co/g00gl
 ```
 
-### Usage for JSON and Text files:
+### Preprocessing JSON file:
 
-```
+```python
 # JSON example
 >>> input_file_name = "sample_json.json"
 >>> p.clean_file(file_name, options=[p.OPT.URL, p.OPT.MENTION]) 
+Saved the cleaned tweets to:/tests/artifacts/24052020_013451892752_
+vkeCMTwBEMmX_clean_file_sample.json
+```
 
+### Preprocessing text file:
+
+```python
 # Text file example 
 >>> input_file_name = "sample_txt.txt"
 >>> p.clean_file(file_name, options=[p.OPT.URL, p.OPT.MENTION])
+Saved the cleaned tweets to:/tests/artifacts/24052020_013451908865_
+TE9DWX1BjFws_clean_file_sample.txt
 ```
+
+
+
+
 
 ### Available Options:
 
