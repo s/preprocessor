@@ -9,7 +9,8 @@ This module includes preprocess functionality
 
 import re
 from .defines import *
-from .utils import Utils
+from .utils import get_worker_methods
+
 
 class Preprocess:
 
@@ -17,12 +18,10 @@ class Preprocess:
 
     def __init__(self):
         self.repl = None
-        self.u = Utils()
 
     def clean(self, tweet_string, repl):
 
-        cleaner_methods = self.u.get_worker_methods(self, Defines.PREPROCESS_METHODS_PREFIX)
-
+        cleaner_methods = get_worker_methods(self, Defines.PREPROCESS_METHODS_PREFIX)
         for a_cleaner_method in cleaner_methods:
             token = self.get_token_string_from_method_name(a_cleaner_method)
             method_to_call = getattr(self, a_cleaner_method)

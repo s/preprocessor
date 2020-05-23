@@ -9,16 +9,23 @@ import sys
 from .enum import enum
 
 opts = {
-    'URL':'urls',
-    'MENTION':'mentions',
-    'HASHTAG':'hashtags',
-    'RESERVED':'reserved_words',
-    'EMOJI':'emojis',
-    'SMILEY':'smileys',
-    'NUMBER': 'numbers'
+    'URL': 'urls',
+    'MENTION': 'mentions',
+    'HASHTAG': 'hashtags',
+    'RESERVED': 'reserved_words',
+    'EMOJI': 'emojis',
+    'SMILEY': 'smileys',
+    'NUMBER':  'numbers'
 }
 Options = enum(**opts)
 Functions = enum('CLEAN', 'TOKENIZE', 'PARSE')
+
+input_file_type = {
+    'json': '.json',
+    'text': '.txt',
+    'unsupported': 'unsupported'
+}
+InputFileType = enum(**input_file_type)
 
 
 class Defines:

@@ -6,7 +6,7 @@ This module includes parse functionality
 """
 
 import re
-from .utils import Utils
+from .utils import *
 from .defines import Defines, Patterns
 
 class ParseResult:
@@ -35,12 +35,12 @@ class ParseItem:
 class Parse:
 
     def __init__(self):
-        self.u = Utils()
+        pass
 
     def parse(self, tweet_string):
         parse_result_obj = ParseResult()
 
-        parser_methods = self.u.get_worker_methods(self, Defines.PARSE_METHODS_PREFIX)
+        parser_methods = get_worker_methods(self, Defines.PARSE_METHODS_PREFIX)
 
         for a_parser_method in parser_methods:
             method_to_call = getattr(self, a_parser_method)
