@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 from setuptools import setup, find_packages
 
-# su anki PyPI yazilimi markdown desteklemiyor
-with open('README.md', encoding='utf-8') as f:
+with open('README', encoding='utf-8', errors= 'ignore') as f:
     long_description = f.read()
 
 setup(
