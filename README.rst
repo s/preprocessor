@@ -2,7 +2,9 @@
 Preprocessor
 *****
 
-|image|
+.. image:: https://travis-ci.org/s/preprocessor.svg?branch=master
+    :target: https://travis-ci.org/s/preprocessor
+
 
 Preprocessor is a preprocessing library for tweet data written in
 Python. It was written as part of my bachelor thesis in sentiment
