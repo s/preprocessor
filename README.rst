@@ -5,6 +5,17 @@ Preprocessor
 .. image:: https://travis-ci.org/s/preprocessor.svg?branch=master
     :target: https://travis-ci.org/s/preprocessor
 
+.. image:: https://img.shields.io/pypi/dm/tweet-preprocessor.svg
+    :target: https://pypi.python.org/pypi/tweet-preprocessor/
+
+.. image:: https://badge.fury.io/py/tweet-preprocessor.svg
+    :target: https://pypi.python.org/pypi/tweet-preprocessor/
+
+.. image:: https://img.shields.io/github/license/s/preprocessor.svg
+    :target: https://github.com/s/preprocessor/blob/master/LICENSE.md
+
+.. image:: https://img.shields.io/pypi/pyversions/tweet-preprocessor.svg
+    :target: https://pypi.python.org/pypi/tweet-preprocessor/
 
 Preprocessor is a preprocessing library for tweet data written in
 Python. It was written as part of my bachelor thesis in sentiment
