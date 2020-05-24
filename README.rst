@@ -165,13 +165,20 @@ Available Options:
 Installation
 ============
 
-using pip:
+Using pip:
 
 .. code:: bash
 
     $ pip install tweet-preprocessor
 
-using manual installation:
+
+Using Anaconda:
+
+.. code:: bash
+    
+    $ conda install -c saidozcan tweet-preprocessor
+
+Using manual installation:
 
 .. code:: bash
 
