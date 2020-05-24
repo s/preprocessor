@@ -17,12 +17,12 @@ Preprocessor
 .. image:: https://img.shields.io/pypi/pyversions/tweet-preprocessor.svg
     :target: https://pypi.python.org/pypi/tweet-preprocessor/
 
-Preprocessor is a preprocessing library for tweet data written in
-Python.
 
-When building Machine Learning systems based on tweet data, a
-preprocessing is required. This library makes it easy to clean, parse or
-tokenize the tweets.
+Preprocessor is a preprocessing library for tweet data written in
+Python. When building Machine Learning systems based on tweet and text data, a
+preprocessing is required. This is required because of quality of the data as well as dimensionality reduction purposes. 
+
+This library makes it easy to clean, parse or tokenize the tweets so you don't have to write the same helper functions over and over again ever time.
 
 Features
 ========
