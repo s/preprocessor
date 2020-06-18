@@ -129,7 +129,7 @@ Preprocessing JSON file:
 
     # JSON example
     >>> input_file_name = "sample_json.json"
-    >>> p.clean_file(file_name, options=[p.OPT.URL, p.OPT.MENTION])
+    >>> p.clean_file(input_file_name, options=[p.OPT.URL, p.OPT.MENTION])
     Saved the cleaned tweets to:/tests/artifacts/24052020_013451892752_vkeCMTwBEMmX_clean_file_sample.json
 
 Preprocessing text file:
@@ -139,7 +139,7 @@ Preprocessing text file:
 
     # Text file example
     >>> input_file_name = "sample_txt.txt"
-    >>> p.clean_file(file_name, options=[p.OPT.URL, p.OPT.MENTION])
+    >>> p.clean_file(input_file_name, options=[p.OPT.URL, p.OPT.MENTION])
     Saved the cleaned tweets to:/tests/artifacts/24052020_013451908865_TE9DWX1BjFws_clean_file_sample.txt
 
 Available Options:
