@@ -58,7 +58,7 @@ class Patterns:
     URL_PATTERN = re.compile(URL_PATTERN_STR, re.IGNORECASE)
     HASHTAG_PATTERN = re.compile(r'#\w*')
     MENTION_PATTERN = re.compile(r'@\w*')
-    RESERVED_WORDS_PATTERN = re.compile(r'^(RT|FAV)')
+    RESERVED_WORDS_PATTERN = re.compile(r'\b(?<![@#])(RT|FAV)\b')
 
     try:
         # UCS-4
