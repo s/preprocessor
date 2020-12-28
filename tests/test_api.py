@@ -47,6 +47,12 @@ class PreprocessorTest(unittest.TestCase):
         cleaned_tweet = p.clean(tweet)
         self.assertEqual('expression experience zoxo xoyo', cleaned_tweet)
 
+    def test_clean_reserved_words(self):
+        tweet = "Awesome!!! RT @RT: This is a tweet about art ART. FAV #RT #FAV #hashtag"
+        p.set_options(p.OPT.RESERVED)
+        cleaned_tweet = p.clean(tweet)
+        self.assertEqual('Awesome!!! @RT: This is a tweet about art ART. #RT #FAV #hashtag', cleaned_tweet)
+
     def test_tokenize(self):
         tweet = 'Packathon was a really #nice :) challenging 👌. @packathonorg http://packathon.org'
         p.set_options(p.OPT.URL, p.OPT.HASHTAG, p.OPT.MENTION, p.OPT.EMOJI, p.OPT.SMILEY)
