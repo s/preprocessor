@@ -57,7 +57,7 @@ class Patterns:
                       za|zm|zw)\b/?(?!@)))"""
     URL_PATTERN = re.compile(URL_PATTERN_STR, re.IGNORECASE)
     HASHTAG_PATTERN = re.compile(r'#\w*')
-    MENTION_PATTERN = re.compile(r'@\w*:?\s?')
+    MENTION_PATTERN = re.compile(r'@\w*:?')
     RESERVED_WORDS_PATTERN = re.compile(r'\b(?<![@#])(RT|FAV)\b')
 
     try:
