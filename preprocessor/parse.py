@@ -44,7 +44,8 @@ class Parse:
 
         for a_parser_method in parser_methods:
             method_to_call = getattr(self, a_parser_method)
-            attr = a_parser_method.split('_')[1]
+            attr = a_parser_method.replace(Defines.PARSE_METHODS_PREFIX,'')
+
 
             items = method_to_call(tweet_string)
             setattr(parse_result_obj, attr, items)
