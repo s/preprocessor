@@ -2,6 +2,8 @@
 tests/artifacts/*
 !tests/artifacts/clean_file_sample.json
 !tests/artifacts/clean_file_sample.txt
+!tests/artifacts/tokenize_file_sample.json
+!tests/artifacts/tokenize_file_sample.txt
 .DS_Store
 .python-version
 __pycache__/
