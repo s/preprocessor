@@ -1,4 +1,4 @@
-from .api import clean, tokenize, parse, set_options, clean_file
+from .api import clean, tokenize, parse, set_options, clean_file, tokenize_file
 from .defines import Options as OPT
 from .defines import InputFileType, Defines
 from .utils import get_worker_methods,\
