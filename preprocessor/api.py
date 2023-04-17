@@ -94,3 +94,26 @@ def clean_file(input_file_path, add_timestamp=False, *options):
     output_path = write_to_output_file(input_file_path, cleaned_content, add_timestamp)
     print("Saved the cleaned tweets to:" + output_path)
     return output_path
+
+def tokenize_file(input_file_path, add_timestamp=False, *options):
+    """Tokenize given input file in JSON and txt format if it can be found at the given path.
+    Returns a stdout for the output file path.
+    :param input_file_path: Absolute path for the tweets. Could be either in JSON or .txt format.
+    :param add_timestamp: If True, adds current timestamp to the filename
+    :return: output file path: str. Returns the file path of the cleaned file.
+    :rtype: str
+    :raises IOError if the input file empty
+    Usage::
+      >>> input_file_name = "sample.json"
+      >>> p.tokenize_file(file_name, p.OPT.URL, p.OPT.MENTION)
+    """
+    file_contents = get_file_contents(input_file_path)
+    if not file_contents or len(file_contents) == 0:
+        raise IOError("Empty file given at path:" + input_file_path)
+
+    tokenized_content = []
+    for line in file_contents:
+        tokenized_content.append(tokenize(line))
+    output_path = write_to_output_file(input_file_path, tokenized_content, add_timestamp)
+    print("Saved the tokenized tweets to:" + output_path)
+    return output_path

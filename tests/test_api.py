@@ -101,7 +101,7 @@ class PreprocessorTest(unittest.TestCase):
             self.assertIsNotNone(raw_data)
 
             # Test all option
-            check_against = self._get_test_data_for_option(raw_data)
+            check_against = self._get_cleaned_test_data_for_option(raw_data)
             self._test_clean_file(full_input_path, check_against)
 
             # Test individual options
@@ -115,8 +115,35 @@ class PreprocessorTest(unittest.TestCase):
                 p.OPT.NUMBER
             ]
             for opt in options:
-                check_against = self._get_test_data_for_option(raw_data, opt)
+                check_against = self._get_cleaned_test_data_for_option(raw_data, opt)
                 self._test_clean_file(full_input_path, check_against, opt)
+
+    def test_tokenize_file(self):
+            current_dir = os.path.dirname(__file__)
+            artifacts_dir = os.path.join(current_dir, self._artifacts_dir_name)
+            extensions = [p.InputFileType.json, p.InputFileType.text]
+            for ext in extensions:
+                full_input_path = os.path.join(artifacts_dir, "tokenize_file_sample" + ext)
+                raw_data = p.get_file_contents(full_input_path)
+                self.assertIsNotNone(raw_data)
+
+                # Test all option
+                check_against = self._get_tokenized_test_data_for_option(raw_data)
+                self._test_clean_file(full_input_path, check_against)
+
+                # Test individual options
+                options = [
+                    p.OPT.URL,
+                    p.OPT.MENTION,
+                    p.OPT.HASHTAG,
+                    p.OPT.RESERVED,
+                    p.OPT.EMOJI,
+                    p.OPT.SMILEY,
+                    p.OPT.NUMBER
+                ]
+                for opt in options:
+                    check_against = self._get_tokenized_test_data_for_option(raw_data, opt)
+                    self._test_tokenize_file(full_input_path, check_against, opt)
 
     def test_escape_chars(self):
         p.set_options(p.OPT.ESCAPE_CHAR)
@@ -130,11 +157,23 @@ class PreprocessorTest(unittest.TestCase):
         self.assertTrue(os.path.exists(output_path))
         clean_content = p.get_file_contents(output_path)
         p.are_lists_equal(clean_content, check_against)
+        
+    def _test_tokenize_file(self, full_input_path, check_against, *options):
+        output_path = p.tokenize_file(full_input_path, True, options)
+        self.assertTrue(os.path.exists(output_path))
+        clean_content = p.get_file_contents(output_path)
+        p.are_lists_equal(clean_content, check_against)
 
-    def _get_test_data_for_option(self, raw_data, *options):
+    def _get_cleaned_test_data_for_option(self, raw_data, *options):
         clean_data = []
         for d in raw_data:
             clean_data.append(p.clean(d))
+        return clean_data
+    
+    def _get_tokenized_test_data_for_option(self, raw_data, *options):
+        clean_data = []
+        for d in raw_data:
+            clean_data.append(p.tokenize(d))
         return clean_data
 
 
